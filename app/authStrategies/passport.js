@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt'
 import crypto from 'crypto'
 import passport from 'passport'
 import _ from 'lodash';

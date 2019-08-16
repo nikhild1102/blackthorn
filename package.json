@@ -10,8 +10,6 @@
   "dependencies": {
     "async": "^2.5.0",
     "babel-cli": "^6.26.0",
-    "bcrypt": "^2.0.0",
-    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
     "compression": "^1.7.1",
     "convict": "^4.0.1",
