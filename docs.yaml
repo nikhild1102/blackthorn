@@ -3,7 +3,7 @@ info:
   description: This is the API docs
   version: "1.0.0"
   title: Blackthorn
-host: evening-gorge-41360.herokuapp.com/
+host: evening-gorge-41360.herokuapp.com
 basePath: /
 tags:
 - name: Address
