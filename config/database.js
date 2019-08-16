@@ -8,7 +8,7 @@ module.exports = {
     host: config.get('db.host'),
     dialect: 'mysql'
   },
-  production: {
+  staging: {
     username: config.get('db.user'),
     password: config.get('db.password'),
     database: config.get('db.name'),
