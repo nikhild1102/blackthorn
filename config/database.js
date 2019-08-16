@@ -6,13 +6,13 @@ module.exports = {
     password: config.get('db.password'),
     database: config.get('db.name'),
     host: config.get('db.host'),
-    dialect: 'mysql'
+    dialect: config.get('db.db_dialect')
   },
   staging: {
     username: config.get('db.user'),
     password: config.get('db.password'),
     database: config.get('db.name'),
     host: config.get('db.host'),
-    dialect: 'postgres'
+    dialect: config.get('db.db_dialect')
   }
 }

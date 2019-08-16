@@ -13,6 +13,12 @@ const config = convict({
       default: "localhost",
       env: "DB_HOST"
     },
+    db_dialect: {
+      doc: "DB Dialect",
+      format: String,
+      default: "mysql",
+      env: "DB_DIALECT"
+    },
     name: {
       doc: "DB name",
       format: String,
