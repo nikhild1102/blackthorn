@@ -3,7 +3,7 @@ info:
   description: This is the API docs
   version: "1.0.0"
   title: Blackthorn
-host: localhost:12345
+host: evening-gorge-41360.herokuapp.com/
 basePath: /
 tags:
 - name: Address
@@ -14,6 +14,8 @@ tags:
   description: Operations about currencies supported
 - name: Products
   description: Opreation about user wallet
+schemes:
+- "https"
 paths:
   /cart/details/{cartId}:
     get:
