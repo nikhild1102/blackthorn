@@ -1,0 +1,396 @@
+swagger: "2.0"
+info:
+  description: This is the API docs
+  version: "1.0.0"
+  title: Blackthorn
+host: localhost:12345
+basePath: /
+tags:
+- name: Address
+  description: Operations about user
+- name: Cart
+  description: Operations about admin
+- name: Order
+  description: Operations about currencies supported
+- name: Products
+  description: Opreation about user wallet
+paths:
+  /cart/details/{cartId}:
+    get:
+      tags:
+      - Cart
+      summary: "Cart Details"
+      operationId: cartDetails
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: cartId
+      responses:
+        200:
+          description: Return cart details
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /cart/create:
+    post:
+      tags:
+      - Cart
+      summary: "Create new cart"
+      operationId: createCart
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: userId
+      - in: body
+        name: shippingAddressId
+      - in: body
+        name: billingAddressId
+      - in: body
+        name: discount
+      - in: body
+        name: taxes
+      - in: body
+        name: shippingAmount
+      - in: body
+        name: totalAmount
+      - in: body
+        name: contactNo
+      - in: body
+        name: couponId
+      responses:
+        200:
+          description: Create new cart
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /cart/update:
+    post:
+      tags:
+      - Cart
+      summary: "Update existing cart"
+      operationId: updateCart
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: cartId
+      - in: body
+        name: userId
+      - in: body
+        name: shippingAddressId
+      - in: body
+        name: billingAddressId
+      - in: body
+        name: discount
+      - in: body
+        name: taxes
+      - in: body
+        name: shippingAmount
+      - in: body
+        name: totalAmount
+      - in: body
+        name: contactNo
+      - in: body
+        name: couponId
+      responses:
+        200:
+          description: Update existing cart
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /cart/add-item:
+    post:
+      tags:
+      - Cart
+      summary: "Add item to cart"
+      operationId: addItem
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: productId
+      - in: body
+        name: cartId
+      - in: body
+        name: quantity
+      - in: body
+        name: price
+      responses:
+        200:
+          description: Item added to cart
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /cart/remove-item:
+    post:
+      tags:
+      - Cart
+      summary: "Remove item from cart"
+      operationId: addItem
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: itemId
+      responses:
+        200:
+          description: Item removed from cart
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /product/list:
+    get:
+      tags:
+      - Products
+      summary: "Get products list"
+      operationId: productList
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: Returns list of products
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /product/detail/{productId}:
+    get:
+      tags:
+      - Products
+      summary: "Get details of specific product"
+      operationId: addItem
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: productId
+      responses:
+        200:
+          description: Return product details
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /address/add:
+    post:
+      tags:
+      - Address
+      summary: "Add new address"
+      operationId: addAddress
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: street1
+      - in: body
+        name: street2
+      - in: body
+        name: city
+      - in: body
+        name: state
+      - in: body
+        name: country
+      - in: body
+        name: zip
+      responses:
+        200:
+          description: New address added
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /address/get/{addressId}:
+    get:
+      tags:
+      - Address
+      summary: "Get address details"
+      operationId: getAddress
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: path
+        name: addressId
+      responses:
+        200:
+          description: Returns address details
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /order/place:
+    post:
+      tags:
+      - Order
+      summary: "Place order"
+      operationId: placeOrder
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: cartId
+      responses:
+        200:
+          description: Place order of existing cart
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
+  /order/update-status:
+    post:
+      tags:
+      - Order
+      summary: "Update order status"
+      operationId: getAddress
+      consumes: 
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: body
+        name: orderId
+      - in: body
+        name: status
+      responses:
+        200:
+          description: Update order status
+          schema:
+            $ref: '#/definitions/UserCreated'
+        400:
+          description: Bad Request Error
+          schema:
+            $ref: '#/definitions/400CreateUser'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/500'
+        503:
+          description: Service Unavailable Error
+          schema:
+            $ref: '#/definitions/503'
