@@ -16,7 +16,10 @@ const constraints = {
     presence: { allowEmpty: false }
   },
   zip: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   }
 }
 
@@ -26,7 +29,6 @@ class AddAddress extends ServiceBase {
   }
 
   async run () {
-    const Op          = Sequelize.Op;
     const data        = {};
     data['street1']   = this.street1;
     data['street2']   = this.street2;

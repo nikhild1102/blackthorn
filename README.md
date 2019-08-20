@@ -1,3 +1,15 @@
+## Technologies
+
+| NodeJS
+
+| ExpressJS
+
+| Postgres / MySQL (Need to update config/app.js for change)
+
+| Artillery
+
+| Swagger
+
 ## Version Compatibility
 
 | Node Version
@@ -29,6 +41,10 @@ npm start
 For Development/Staging
 ```
 npm run start:dev
+```
+For load testing
+```
+artillery run load-test.yaml
 ```
 #### API Docs:
 ```

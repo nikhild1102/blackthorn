@@ -1,4 +1,4 @@
-const Base = require('../../server/serviceBase')
+const Base = require('../../server/serviceBase');
 
 class ServiceBase extends Base { }
 

@@ -4,7 +4,10 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
   itemId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   }
 }
 
@@ -14,7 +17,6 @@ class RemoveItem extends ServiceBase {
   }
 
   async run () {
-    const Op      = Sequelize.Op;
     const data    = {};
     const itemId  = this.itemId;
     

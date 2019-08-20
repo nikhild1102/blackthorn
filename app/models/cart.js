@@ -4,48 +4,61 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     user_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
     },
-    coupon_id:{
-      type: Sequelize.INTEGER
+    coupon_id: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'coupons',
+        key: 'id',
+      },
     },
     shipping_address_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'addresses',
+        key: 'id',
+      },
     },
     billing_address_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'addresses',
+        key: 'id',
+      },
     },
     discount: {
-      type: Sequelize.FLOAT
+      type: Sequelize.FLOAT,
     },
     taxes: {
-      type: Sequelize.FLOAT
+      type: Sequelize.FLOAT,
     },
     shipping_amount: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     total_amount: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     contact_no: {
       type: Sequelize.STRING,
     },
-    coupon_id: {
-      type: Sequelize.INTEGER
-    },
     created_at: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updated_at: {
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   },
   {
     freezeTableName: true,
-    timestamps: false
+    timestamps: false,
   });
-  return Cart
-}
+  return Cart;
+};

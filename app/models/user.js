@@ -4,24 +4,24 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     name: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     address: {
       allowNull: false,
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     contact_number: {
       allowNull: false,
-      type: Sequelize.STRING
-    }
+      type: Sequelize.STRING,
+    },
   });
-  return User
-}
+  return User;
+};

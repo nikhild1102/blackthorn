@@ -4,7 +4,10 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
   orderId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   status: {
     presence: { allowEmpty: false }
@@ -17,7 +20,6 @@ class PlaceOrder extends ServiceBase {
   }
 
   async run () {
-    const Op            = Sequelize.Op;
     const orderId       = this.orderId;
     const status        = this.status;
     
@@ -26,6 +28,11 @@ class PlaceOrder extends ServiceBase {
         id: orderId
       }
     });
+
+    if(!order) {
+      this.addError('order','Order id does not exists.');
+      return;
+    }
 
     await order.update({status:status});
 

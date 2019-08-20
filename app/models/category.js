@@ -4,12 +4,12 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     name: {
       type: Sequelize.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   });
-  return Categories
-}
+  return Categories;
+};

@@ -1,12 +1,12 @@
-import * as server from './server'
+import * as server from './server';
 
 const logErrors = (error) => {
-  server.logger.error(error.message, { stack: error.stack })
-}
+  server.logger.error(error.message, {stack: error.stack});
+};
 
-process.on('uncaughtException', logErrors)
+process.on('uncaughtException', logErrors);
 process.on('unhandledRejection', (error) => {
-  console.log(error)
-})
+  console.log(error);
+});
 
-server.app.start()
+server.app.start();

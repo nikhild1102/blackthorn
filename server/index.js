@@ -1,8 +1,8 @@
-import Responder from './expressResponder'
-import * as express from './express'
-import logger from './logger'
-import start from './app'
+import Responder from './expressResponder';
+import * as express from './express';
+import logger from './logger';
+import start from './app';
 
-const app = { start }
+const app = {start};
 
-export { Responder, express, logger, app }
+export {Responder, express, logger, app};

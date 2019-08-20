@@ -1,71 +1,71 @@
-const convict = require('convict')
+const convict = require('convict');
 const config = convict({
   env: {
-    doc: "The application environment",
-    format: ["development", "staging"],
-    default: "development",
-    env: "NODE_ENV"
+    doc: 'The application environment',
+    format: ['development', 'staging'],
+    default: 'development',
+    env: 'NODE_ENV',
   },
-  db:{
+  db: {
     host: {
-      doc: "DB host",
+      doc: 'DB host',
       format: String,
-      default: "localhost",
-      env: "DB_HOST"
+      default: 'localhost',
+      env: 'DB_HOST',
     },
     db_dialect: {
-      doc: "DB Dialect",
+      doc: 'DB Dialect',
       format: String,
-      default: "mysql",
-      env: "DB_DIALECT"
+      default: 'mysql',
+      env: 'DB_DIALECT',
     },
     name: {
-      doc: "DB name",
+      doc: 'DB name',
       format: String,
-      default: "shop",
-      env: "DB_NAME"
+      default: 'shop',
+      env: 'DB_NAME',
     },
     user: {
-      doc: "DB user",
+      doc: 'DB user',
       format: String,
-      default: "root",
-      env: "DB_USER"
+      default: 'root',
+      env: 'DB_USER',
     },
     password: {
-      doc: "DB passsword",
+      doc: 'DB passsword',
       format: String,
-      default: "12345678",
-      env: "DB_PASSWORD"
+      default: '12345678',
+      env: 'DB_PASSWORD',
     },
     port: {
-      doc: "DB port",
+      doc: 'DB port',
       format: String,
-      default: "3306",
-      env: "DB_PORT"
-    }
-  },
-  app:{
-    name: {
-      doc: "App name",
-      format: String,
-      default: "Blackthorn",
-      env: "APP_NAME"
-    }
-  },
-  port: {
-    doc: "Application port",
-    format: String,
-    default: "12345",
-    env: "PORT"
-  },
-  log:{
-    level: {
-      doc: "Log level",
-      format: String,
-      default: "debug",
-      env: "LOG_LEVEL"
+      default: '3306',
+      env: 'DB_PORT',
     },
   },
-})
-config.validate({ allowed: 'strict' })
-module.exports = config
+  app: {
+    name: {
+      doc: 'App name',
+      format: String,
+      default: 'Blackthorn',
+      env: 'APP_NAME',
+    },
+  },
+  port: {
+    doc: 'Application port',
+    format: String,
+    default: '12345',
+    env: 'PORT',
+  },
+  log: {
+    level: {
+      doc: 'Log level',
+      format: String,
+      default: 'debug',
+      env: 'LOG_LEVEL',
+    },
+  },
+});
+config.validate({allowed: 'strict'});
+module.exports = config;

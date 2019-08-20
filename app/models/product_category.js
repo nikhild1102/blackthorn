@@ -4,14 +4,22 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     product_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'products',
+        key: 'id',
+      },
     },
     category_id: {
-      type: Sequelize.INTEGER
-    }
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'categories',
+        key: 'id',
+      },
+    },
   });
-  return Categories
-}
+  return Categories;
+};

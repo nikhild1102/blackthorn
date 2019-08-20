@@ -14,7 +14,7 @@ class ProductController {
 
   static async list (req, res) {
     try {
-      const list = await ProductList.execute(req.body)
+      const list = await ProductList.execute({pageNo:req.params.pageNo,pageSize:req.params.pageSize})
       Responder.send(list, res)
     } catch(error) {
       Responder.operationFailed(res, error)

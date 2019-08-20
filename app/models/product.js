@@ -4,22 +4,22 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     name: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     price: {
       type: Sequelize.FLOAT,
-      allowNull: false
+      allowNull: false,
     },
     sku: {
       allowNull: false,
-      type: Sequelize.INTEGER
-    }
-  },{
-    timestamps: false
+      type: Sequelize.INTEGER,
+    },
+  }, {
+    timestamps: false,
   });
-  return Product
-}
+  return Product;
+};

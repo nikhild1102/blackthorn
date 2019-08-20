@@ -1,10 +1,10 @@
-import apiRoutes from './api'
+import apiRoutes from './api';
 
-const initRoutes = app => {
+const initRoutes = (app) => {
   app.get('/healthcheck', (req, res) => {
-    res.sendStatus(200)
-  })
-  app.use(apiRoutes)
-}
+    res.sendStatus(200);
+  });
+  app.use(apiRoutes);
+};
 
-export default initRoutes
+export default initRoutes;

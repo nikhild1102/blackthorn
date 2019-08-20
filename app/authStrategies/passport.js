@@ -5,7 +5,6 @@ import { Strategy as BearerStrategy } from 'passport-http-bearer'
 import { BasicStrategy } from 'passport-http'
 import config from '../../config/app'
 import Log from '../../server/logger'
-import Token from './../models/token'
 const db = require('../../server/sequelizeNew')
 
 const registerInternalAuthStrategy = () => {

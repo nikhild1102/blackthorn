@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     coupon_code: {
       type: Sequelize.STRING,
@@ -16,14 +16,14 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.FLOAT,
     },
     expiry_at: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     created_at: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updated_at: {
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   });
-  return Coupon
-}
+  return Coupon;
+};

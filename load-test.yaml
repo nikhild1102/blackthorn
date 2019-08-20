@@ -1,0 +1,131 @@
+config:
+  target: "https://evening-gorge-41360.herokuapp.com"
+  tls:
+    rejectUnauthorized: false
+  phases:
+    - duration: 100
+      arrivalRate: 10
+scenarios:
+  - name: "Get address"
+    flow:
+      - loop:
+          - get:
+              url: "/address/get/1"
+          - think: 1
+        count: 50
+  - name: "Get cart details"
+    flow:
+      - loop:
+          - get:
+              url: "/cart/details/1"
+          - think: 1
+        count: 50
+  - name: "Get product lists"
+    flow:
+      - loop:
+          - get:
+              url: "/product/list"
+          - think: 1
+        count: 50
+  - name: "Get product details"
+    flow:
+      - loop:
+          - get:
+              url: "/product/details/1"
+          - think: 1
+        count: 50
+  - name: "Get product details"
+    flow:
+      - loop:
+          - post:
+              url: "/address/add"
+              json:
+                street1: "{{ $randomString() }}"
+                street2: "{{ $randomString() }}"
+                city: "{{ $randomString() }}"
+                state: "{{ $randomString() }}"
+                country: "{{ $randomString() }}"
+                zip: "{{$randomNumber(1,10000)}}"
+          - think: 1
+        count: 50
+  - name: "Create cart"
+    flow:
+      - loop:
+          - post:
+              url: "/cart/add"
+              json:
+                userId: "1"
+                shippingAddressId: "1"
+                billingAddressId: "1"
+                discount: "0"
+                taxes: "0"
+                shippingAmount: "0"
+                totalAmount: "{{$randomNumber(1,100)}}"
+                contactNo: "{{$randomNumber(6000000000,9999999999)}}"
+                couponId: "0"
+              capture: 
+                json: "$.data"
+                as: "cartIdData"
+          - think: 1
+        count: 50
+  - name: "Create update"
+    flow:
+      - loop:
+          - post:
+              url: "/cart/update"
+              json:
+                cartId: "{{ cartIdData.cartId }}"
+                userId: "1"
+                shippingAddressId: "1"
+                billingAddressId: "1"
+                discount: "0"
+                taxes: "0"
+                shippingAmount: "0"
+                totalAmount: "{{$randomNumber(1,100)}}"
+                contactNo: "{{$randomNumber(6000000000,9999999999)}}"
+                couponId: "0"
+          - think: 1
+        count: 50
+  - name: "Add item"
+    flow:
+      - loop:
+          - post:
+              url: "/cart/add-item"
+              json:
+                productId: "{{$randomNumber(1,2)}}"
+                cartId: "{{ cartIdData.cartId }}"
+                quantity: "{{$randomNumber(1,5)}}"
+                price: "{{$randomNumber(1,5)}}"
+          - think: 1
+        count: 50
+  - name: "Remove item"
+    flow:
+      - loop:
+          - post:
+              url: "/cart/remove-item"
+              json:
+                itemId: "1"
+          - think: 1
+        count: 50
+  - name: "Place order"
+    flow:
+      - loop:
+          - post:
+              url: "/order/place"
+              json:
+                cartId: "{{ cartIdData.cartId }}"
+              capture:
+                json: "$.data"
+                as: "orderIdData"
+          - think: 1
+        count: 50
+  - name: "Update order status"
+    flow:
+      - loop:
+          - post:
+              url: "/order/update-status"
+              json:
+                orderId: "{{ orderIdData.orderId }}"
+                status: "Pending"
+          - think: 1
+        count: 50

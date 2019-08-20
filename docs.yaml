@@ -59,23 +59,28 @@ paths:
       - "application/json"
       parameters:
       - in: body
-        name: userId
-      - in: body
-        name: shippingAddressId
-      - in: body
-        name: billingAddressId
-      - in: body
-        name: discount
-      - in: body
-        name: taxes
-      - in: body
-        name: shippingAmount
-      - in: body
-        name: totalAmount
-      - in: body
-        name: contactNo
-      - in: body
-        name: couponId
+        name: body
+        schema:
+          type: object
+          properties:
+            userId:
+              type: integer
+            shippingAddressId:
+              type: integer
+            billingAddressId:
+              type: integer
+            discount:
+              type: integer
+            taxes:
+              type: integer
+            shippingAmount:
+              type: integer
+            totalAmount:
+              type: integer
+            contactNo:
+              type: string
+            couponId:
+              type: string
       responses:
         200:
           description: Create new cart
@@ -94,7 +99,7 @@ paths:
           schema:
             $ref: '#/definitions/503'
   /cart/update:
-    post:
+    put:
       tags:
       - Cart
       summary: "Update existing cart"
@@ -105,25 +110,30 @@ paths:
       - "application/json"
       parameters:
       - in: body
-        name: cartId
-      - in: body
-        name: userId
-      - in: body
-        name: shippingAddressId
-      - in: body
-        name: billingAddressId
-      - in: body
-        name: discount
-      - in: body
-        name: taxes
-      - in: body
-        name: shippingAmount
-      - in: body
-        name: totalAmount
-      - in: body
-        name: contactNo
-      - in: body
-        name: couponId
+        name: body
+        schema:
+          type: object
+          properties:
+            cartId:
+              type: integer
+            userId:
+              type: integer
+            shippingAddressId:
+              type: integer
+            billingAddressId:
+              type: integer
+            discount:
+              type: integer
+            taxes:
+              type: integer
+            shippingAmount:
+              type: integer
+            totalAmount:
+              type: integer
+            contactNo:
+              type: string
+            couponId:
+              type: string
       responses:
         200:
           description: Update existing cart
@@ -153,13 +163,18 @@ paths:
       - "application/json"
       parameters:
       - in: body
-        name: productId
-      - in: body
-        name: cartId
-      - in: body
-        name: quantity
-      - in: body
-        name: price
+        name: body
+        schema: 
+          type: object
+          properties:
+            productId:
+              type: integer
+            cartId:
+              type: integer
+            quantity:
+              type: integer
+            price:
+              type: integer
       responses:
         200:
           description: Item added to cart
@@ -178,18 +193,23 @@ paths:
           schema:
             $ref: '#/definitions/503'
   /cart/remove-item:
-    post:
+    delete:
       tags:
       - Cart
       summary: "Remove item from cart"
-      operationId: addItem
+      operationId: removeItem
       consumes: 
       - "application/json"
       produces:
       - "application/json"
       parameters:
       - in: body
-        name: itemId
+        name: body
+        schema:
+          type: object
+          properties:
+            itemId:
+              type: integer
       responses:
         200:
           description: Item removed from cart
@@ -207,7 +227,7 @@ paths:
           description: Service Unavailable Error
           schema:
             $ref: '#/definitions/503'
-  /product/list:
+  /product/list/{pageNo}/{pageSize}:
     get:
       tags:
       - Products
@@ -217,6 +237,13 @@ paths:
       - "application/json"
       produces:
       - "application/json"
+      parameters:
+      - in: path
+        name: pageNo
+        type: integer
+      - in: path
+        name: pageSize
+        type: integer
       responses:
         200:
           description: Returns list of products
@@ -239,7 +266,7 @@ paths:
       tags:
       - Products
       summary: "Get details of specific product"
-      operationId: addItem
+      operationId: productDetail
       consumes: 
       - "application/json"
       produces:
@@ -276,17 +303,22 @@ paths:
       - "application/json"
       parameters:
       - in: body
-        name: street1
-      - in: body
-        name: street2
-      - in: body
-        name: city
-      - in: body
-        name: state
-      - in: body
-        name: country
-      - in: body
-        name: zip
+        name: body
+        schema:
+          type: object
+          properties:
+            street1:
+              type: string
+            street2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            country:
+              type: string
+            zip:
+              type: integer
       responses:
         200:
           description: New address added
@@ -346,7 +378,12 @@ paths:
       - "application/json"
       parameters:
       - in: body
-        name: cartId
+        name: body
+        schema:
+          type: object
+          properties:
+            cartId:
+              type: integer
       responses:
         200:
           description: Place order of existing cart
@@ -369,16 +406,21 @@ paths:
       tags:
       - Order
       summary: "Update order status"
-      operationId: getAddress
+      operationId: updateStatus
       consumes: 
       - "application/json"
       produces:
       - "application/json"
       parameters:
       - in: body
-        name: orderId
-      - in: body
-        name: status
+        name: body
+        schema:
+          type: object
+          properties:
+            orderId:
+              type: integer
+            status:
+              type: string
       responses:
         200:
           description: Update order status

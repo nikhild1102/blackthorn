@@ -4,34 +4,34 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     product_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'products',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     order_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: 'cart',
-        key: 'id'
-      }
+        model: 'orders',
+        key: 'id',
+      },
     },
     quantity: {
       allowNull: false,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     price: {
       allowNull: false,
-      type: Sequelize.FLOAT
-    }
-  },{
-    timestamps: false
+      type: Sequelize.FLOAT,
+    },
+  }, {
+    timestamps: false,
   });
-  return OrderItem
-}
+  return OrderItem;
+};

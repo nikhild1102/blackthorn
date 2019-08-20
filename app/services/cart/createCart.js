@@ -4,16 +4,40 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
   shippingAddressId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   billingAddressId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   totalAmount: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {}
   },
   contactNo: {
     presence: { allowEmpty: false }
+  },
+  discount: {
+    numericality: {}
+  },
+  taxes: {
+    numericality: {}
+  },
+  shippingAmount: {
+    numericality: {}
+  },
+  totalAmount: {
+    numericality: {}
+  },
+  couponId: {
+    numericality: {
+      onlyInteger: true
+    }
   }
 }
 
@@ -23,7 +47,6 @@ class CreateCart extends ServiceBase {
   }
 
   async run () {
-    const Op          = Sequelize.Op;
     const data        = {};
     data['userId']                = this.userId;
     data['shipping_address_id']   = this.shippingAddressId;
@@ -37,7 +60,7 @@ class CreateCart extends ServiceBase {
 
     const cartId = await db.cart.create(data);
       
-    return { message: 'cart created successfully.' }
+    return { message: 'cart created successfully.', cartId: cartId.id }
   }
 }
 

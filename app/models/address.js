@@ -4,35 +4,35 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     street1: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
-    street2:{
-      type: Sequelize.STRING
+    street2: {
+      type: Sequelize.STRING,
     },
     city: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     state: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     country: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     zip: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     created_at: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updated_at: {
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   },
   {
-    timestamps: false
+    timestamps: false,
   });
-  return Address
-}
+  return Address;
+};

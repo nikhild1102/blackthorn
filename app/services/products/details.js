@@ -4,7 +4,10 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
 	productId: {
-    	presence: { allowEmpty: false }
+    	presence: { allowEmpty: false },
+      numericality: {
+        onlyInteger: true
+      }
   	}
 }
 
@@ -14,15 +17,19 @@ class ProductDetail extends ServiceBase {
   }
 
   async run () {
-    const Op    = Sequelize.Op;
     const data  = {};
     const productId = this.productId;
-    console.log(productId)
+    
     const product = await db.product.findOne({
       where: {
     	 id: productId
       }
     });
+
+    if(!product) {
+      this.addError('product','Product id does not exists.');
+      return;
+    }
       
     return { product }
   }

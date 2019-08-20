@@ -4,16 +4,26 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
   cartId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   shippingAddressId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   billingAddressId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   totalAmount: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {}
   },
   contactNo: {
     presence: { allowEmpty: false }
@@ -26,7 +36,6 @@ class UpdateCart extends ServiceBase {
   }
 
   async run () {
-    const Op          = Sequelize.Op;
     const data        = {};
     const cartId                  = this.cartId;
     data['userId']                = this.userId;
@@ -44,6 +53,12 @@ class UpdateCart extends ServiceBase {
         id : cartId
       }
     })
+
+    if(!cart) {
+      this.addError('cart','Cart id does not exists.');
+      return;
+    }
+
     const cartObj = await cart.update(data);
       
     return { message: 'cart updated successfully.' }

@@ -4,16 +4,26 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
   productId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   cartId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   quantity: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   },
   price: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {}
   }
 }
 
@@ -23,7 +33,6 @@ class AddItem extends ServiceBase {
   }
 
   async run () {
-    const Op            = Sequelize.Op;
     const data          = {};
     data['product_id']   = this.productId;
     data['cart_id']      = this.cartId;

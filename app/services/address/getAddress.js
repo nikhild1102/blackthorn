@@ -4,7 +4,10 @@ const db = require('@server/sequelizeNew')
 
 const constraints = {
   addressId: {
-    presence: { allowEmpty: false }
+    presence: { allowEmpty: false },
+    numericality: {
+      onlyInteger: true
+    }
   }
 }
 
@@ -14,7 +17,6 @@ class GetAddress extends ServiceBase {
   }
 
   async run () {
-    const Op    = Sequelize.Op;
     const data  = {};
     const addressId   = this.addressId;
     
@@ -23,8 +25,14 @@ class GetAddress extends ServiceBase {
         id : addressId
       }
     });
-      
-    return { address }
+    
+    if(address) {
+      return { address }
+    } else {
+      this.addError('address','Address id does not exists.');
+      return;
+    }
+
   }
 }
 
