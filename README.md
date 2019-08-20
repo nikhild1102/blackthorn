@@ -18,6 +18,11 @@
 
 ## Usage
 
+#### Setup project:
+```
+npm install
+```
+
 #### Create db from migration:
 ```
 npm run db:create
@@ -32,6 +37,7 @@ npm run db:migrate
 ```
 npm run db:seed
 ```
+Currently we added 4 products in heroku with respective product id 1,2,3 & 4
 
 #### Start Application:
 For Production
@@ -42,6 +48,10 @@ For Development/Staging
 ```
 npm run start:dev
 ```
+Install artillery
+```
+npm i artillery
+```
 For load testing
 ```
 artillery run load-test.yaml
@@ -49,3 +59,10 @@ artillery run load-test.yaml
 #### API Docs:
 ```
 {{BASEURL}}/docs
+```
+#### Description:
+To create a cart we need to run /cart/create API which will return cartId.
+With cartId we can run following APIs :
+/cart/add-item,
+/cart/update,
+/order/place
